@@ -1,0 +1,502 @@
+[
+    {
+        "Place Name": "Jay Bees Nuts, Jersey City, NJ, USA",
+        "Latitude": "40.679855",
+        "Longitude": "-74.089859"
+    },
+    {
+        "Place Name": "Blue Lagoon, Malta",
+        "Latitude": "36.014118",
+        "Longitude": "14.324206"
+    },
+    {
+        "Place Name": "Story Bridge, QLD, Australia",
+        "Latitude": "-27.463675",
+        "Longitude": "153.035645"
+    },
+    {
+        "Place Name": "The Gabba, Woolloongabba QLD, Australia",
+        "Latitude": "-27.486099",
+        "Longitude": "153.03743"
+    },
+    {
+        "Place Name": "Totally Wicked Stadium, St Helens, UK",
+        "Latitude": "53.447571",
+        "Longitude": "-2.726343"
+    },
+    {
+        "Place Name": "Hobbiton Village, New Zealand",
+        "Latitude": "-37.857567",
+        "Longitude": "175.680557"
+    },
+    {
+        "Place Name": "Kingston Park Stadium, Newcastle upon Tyne, UK",
+        "Latitude": "55.018715",
+        "Longitude": "-1.673066"
+    },
+    {
+        "Place Name": "Leigh Sports Village, Leigh, UK",
+        "Latitude": "53.489803",
+        "Longitude": "-2.530909"
+    },
+    {
+        "Place Name": "Halliwell Jones Stadium, Warrington, UK",
+        "Latitude": "53.394855",
+        "Longitude": "-2.596379"
+    },
+    {
+        "Place Name": "Keepmoat Stadium, Doncaster, UK",
+        "Latitude": "53.509865",
+        "Longitude": "-1.115351"
+    },
+    {
+        "Place Name": "Headingley Stadium, Leeds, UK",
+        "Latitude": "53.817261",
+        "Longitude": "-1.58247"
+    },
+    {
+        "Place Name": "KCOM Stadium, Hull, UK",
+        "Latitude": "53.745853",
+        "Longitude": "-0.368915"
+    },
+    {
+        "Place Name": "The John Smith's Stadium, Huddersfield, UK",
+        "Latitude": "53.654221",
+        "Longitude": "-1.769226"
+    },
+    {
+        "Place Name": "University of Bolton Stadium, Bolton, UK",
+        "Latitude": "53.581093",
+        "Longitude": "-2.536825"
+    },
+    {
+        "Place Name": "Ricoh Arena, Coventry, UK",
+        "Latitude": "52.448212",
+        "Longitude": "-1.496943"
+    },
+    {
+        "Place Name": "Elland Road, Leeds, UK",
+        "Latitude": "53.777782",
+        "Longitude": "-1.573049"
+    },
+    {
+        "Place Name": "St James' Park, Newcastle upon Tyne, UK",
+        "Latitude": "54.97517",
+        "Longitude": "-1.622539"
+    },
+    {
+        "Place Name": "Anfield, Liverpool, UK",
+        "Latitude": "53.430759",
+        "Longitude": "-2.961425"
+    },
+    {
+        "Place Name": "Emirates Stadium, London, UK",
+        "Latitude": "51.554867",
+        "Longitude": "-0.109112"
+    },
+    {
+        "Place Name": "The Trusts Arena, Auckland, New Zealand",
+        "Latitude": "-36.86026",
+        "Longitude": "174.6353"
+    },
+    {
+        "Place Name": "Semenoff Stadium, Whangarei, New Zealand",
+        "Latitude": "-35.733051",
+        "Longitude": "174.32959"
+    },
+    {
+        "Place Name": "Eden Park, Auckland, New Zealand",
+        "Latitude": "-36.875004",
+        "Longitude": "174.744186"
+    },
+    {
+        "Place Name": "Inverness Club, Ohio, USA",
+        "Latitude": "41.651871",
+        "Longitude": "-83.651268"
+    },
+    {
+        "Place Name": "Whistling Straits Golf Course, WI, USA",
+        "Latitude": "43.851112",
+        "Longitude": "-87.735954"
+    },
+    {
+        "Place Name": "Japan National Stadium, Tokyo, Japan",
+        "Latitude": "35.677784",
+        "Longitude": "139.713608"
+    },
+    {
+        "Place Name": "Allianz Arena, Munich, Germany",
+        "Latitude": "48.218967",
+        "Longitude": "11.623746"
+    },
+    {
+        "Place Name": "Gazprom Arena, St Petersburg, Russia",
+        "Latitude": "59.972733",
+        "Longitude": "30.21921"
+    },
+    {
+        "Place Name": "Rocky Mountain National Park, Colorado, USA",
+        "Latitude": "40.343182",
+        "Longitude": "-105.688103"
+    },
+    {
+        "Place Name": "Puskás Aréna, Budapest, Hungary",
+        "Latitude": "47.50312",
+        "Longitude": "19.095879"
+    },
+    {
+        "Place Name": "Arena Na?ionala, Bucharest, Romania",
+        "Latitude": "44.437149",
+        "Longitude": "26.151758"
+    },
+    {
+        "Place Name": "SoFi Stadium, CA, USA",
+        "Latitude": "33.953587",
+        "Longitude": "-118.33963"
+    },
+    {
+        "Place Name": "FirstEnergy Stadium, Ohio, USA",
+        "Latitude": "41.506035",
+        "Longitude": "-81.700058"
+    },
+    {
+        "Place Name": "Nathan's Famous, NY, USA",
+        "Latitude": "40.575195",
+        "Longitude": "-73.981728"
+    },
+    {
+        "Place Name": "Baku Olympic Stadium, Azerbaijan",
+        "Latitude": "40.429913",
+        "Longitude": "49.919163"
+    },
+    {
+        "Place Name": "Stadio Olimpico, Rome, Italy",
+        "Latitude": "41.933964",
+        "Longitude": "12.454297"
+    },
+    {
+        "Place Name": "Atatürk Olympic Stadium, Istanbul, Turkey",
+        "Latitude": "41.074272",
+        "Longitude": "28.764156"
+    },
+    {
+        "Place Name": "Abeokuta, Nigeria",
+        "Latitude": "7.145244",
+        "Longitude": "3.327695"
+    },
+    {
+        "Place Name": "Old Trafford Cricket Ground, Manchester, UK",
+        "Latitude": "53.456356",
+        "Longitude": "-2.287553"
+    },
+    {
+        "Place Name": "Dubai Exhibition Centre, UAE",
+        "Latitude": "24.959969",
+        "Longitude": "55.1474"
+    },
+    {
+        "Place Name": "SEC Centre, Glasgow, UK",
+        "Latitude": "55.861755",
+        "Longitude": "-4.290995"
+    },
+    {
+        "Place Name": "Rotterdam Ahoy, the Netherlands",
+        "Latitude": "51.882946",
+        "Longitude": "4.484922"
+    },
+    {
+        "Place Name": "Rotterdam, Netherlands",
+        "Latitude": "51.926517",
+        "Longitude": "4.462456"
+    },
+    {
+        "Place Name": "Davos, Switzerland",
+        "Latitude": "46.802128",
+        "Longitude": "9.833477"
+    },
+    {
+        "Place Name": "AT&T Stadium, TX, USA",
+        "Latitude": "32.747841",
+        "Longitude": "-97.093628"
+    },
+    {
+        "Place Name": "Centre Court Wimbledon, UK",
+        "Latitude": "51.433727",
+        "Longitude": "-0.214443"
+    },
+    {
+        "Place Name": "Smithsonian National Museum of Natural History",
+        "Latitude": "38.891014",
+        "Longitude": "-77.026703"
+    },
+    {
+        "Place Name": "The Scottish Seabird Centre, UK",
+        "Latitude": "56.061413",
+        "Longitude": "-2.71753"
+    },
+    {
+        "Place Name": "George Perry Floyd Jr. Place",
+        "Latitude": "44.934116",
+        "Longitude": "-93.262573"
+    },
+    {
+        "Place Name": "Mars Island, Croatia",
+        "Latitude": "43.679947",
+        "Longitude": "15.78659"
+    },
+    {
+        "Place Name": "Regent's Park, London, UK",
+        "Latitude": "51.531143",
+        "Longitude": "-0.159893"
+    },
+    {
+        "Place Name": "The National Gallery, London, UK",
+        "Latitude": "51.508972",
+        "Longitude": "-0.128794"
+    },
+    {
+        "Place Name": "The Dolby Theatre that hosts the Oscars",
+        "Latitude": "34.102661",
+        "Longitude": "-118.3405"
+    },
+    {
+        "Place Name": "Jardim Botânico do Rio de Janeiro",
+        "Latitude": "-22.968197",
+        "Longitude": "-43.225933"
+    },
+    {
+        "Place Name": "Temple of the Sacred Tooth Relic, Sri Lanka",
+        "Latitude": "7.293627",
+        "Longitude": "80.64135"
+    },
+    {
+        "Place Name": "The spot where Wish You Were Here Album Cover was photographed",
+        "Latitude": "34.147484",
+        "Longitude": "-118.338547"
+    },
+    {
+        "Place Name": "El Capitan, CA, USA",
+        "Latitude": "37.733952",
+        "Longitude": "-119.637756"
+    },
+    {
+        "Place Name": "Raymond James Stadium, FL, USA",
+        "Latitude": "27.975958",
+        "Longitude": "-82.503693"
+    },
+    {
+        "Place Name": "St. James’s Park, London, UK",
+        "Latitude": "51.502464",
+        "Longitude": "-0.137"
+    },
+    {
+        "Place Name": "Royal Botanic Gardens, Kew",
+        "Latitude": "51.478298",
+        "Longitude": "-0.297954"
+    },
+    {
+        "Place Name": "Obelisco de Buenos Aires, Argentina",
+        "Latitude": "-34.603851",
+        "Longitude": "-58.381775"
+    },
+    {
+        "Place Name": "Hoboken, NJ, USA",
+        "Latitude": "40.745255",
+        "Longitude": "-74.034775"
+    },
+    {
+        "Place Name": "Katz's Delicatessen, New York, USA",
+        "Latitude": "40.722195",
+        "Longitude": "-73.98748"
+    },
+    {
+        "Place Name": "Brooklyn Bridge Park, New York, USA",
+        "Latitude": "40.699215",
+        "Longitude": "-73.999039"
+    },
+    {
+        "Place Name": "The Intrepid Sea, Air & Space Museum, NY, USA",
+        "Latitude": "40.764389",
+        "Longitude": "-73.999786"
+    },
+    {
+        "Place Name": "Top of The Rock, New York, USA",
+        "Latitude": "40.75906",
+        "Longitude": "-73.979431"
+    },
+    {
+        "Place Name": "The High Line, NY, USA",
+        "Latitude": "40.747993",
+        "Longitude": "-74.00489"
+    },
+    {
+        "Place Name": "DLF Mall of India, Uttar Pradesh, India",
+        "Latitude": "28.56719",
+        "Longitude": "77.320892"
+    },
+    {
+        "Place Name": "Mantri Square Mall, Bangalore, India",
+        "Latitude": "12.991753",
+        "Longitude": "77.569641"
+    },
+    {
+        "Place Name": "The National Mall, Washington, USA",
+        "Latitude": "38.887161",
+        "Longitude": "-77.037331"
+    },
+    {
+        "Place Name": "Six Flags México, Mexico",
+        "Latitude": "19.295525",
+        "Longitude": "-99.210808"
+    },
+    {
+        "Place Name": "Forum Buenavista Centro Comercial, Mexico",
+        "Latitude": "19.449223",
+        "Longitude": "-99.152466"
+    },
+    {
+        "Place Name": "Eco Park, Kolkata, India",
+        "Latitude": "22.60309",
+        "Longitude": "88.466576"
+    },
+    {
+        "Place Name": "Lalbagh Botanical Garden, Bengaluru, India",
+        "Latitude": "12.950771",
+        "Longitude": "77.584236"
+    },
+    {
+        "Place Name": "Phoenix Marketcity, Bengaluru, India",
+        "Latitude": "12.995854",
+        "Longitude": "77.69635"
+    },
+    {
+        "Place Name": "Piazza San Marco, Venice, Italy",
+        "Latitude": "45.434185",
+        "Longitude": "12.337817"
+    },
+    {
+        "Place Name": "Sandringham, the birthplace of Diana, Princess of Wales",
+        "Latitude": "52.827015",
+        "Longitude": "0.515626"
+    },
+    {
+        "Place Name": "Universal Orlando Resort, FL, USA",
+        "Latitude": "28.474386",
+        "Longitude": "-81.468193"
+    },
+    {
+        "Place Name": "Costanera Center, Chile",
+        "Latitude": "-33.417988",
+        "Longitude": "-70.607224"
+    },
+    {
+        "Place Name": "Christmas Place, TN, USA",
+        "Latitude": "35.809563",
+        "Longitude": "-83.578728"
+    },
+    {
+        "Place Name": "Bronner's CHRISTmas Wonderland, MI, USA",
+        "Latitude": "43.313988",
+        "Longitude": "-83.737228"
+    },
+    {
+        "Place Name": "Beto Carrero World, Penha, Brazil",
+        "Latitude": "-26.801643",
+        "Longitude": "-48.61768"
+    },
+    {
+        "Place Name": "Rockefeller Center, NY, USA",
+        "Latitude": "40.758678",
+        "Longitude": "-73.978798"
+    },
+    {
+        "Place Name": "Sri Harmandir Sahib, Amritsar, India",
+        "Latitude": "31.620132",
+        "Longitude": "74.876091"
+    },
+    {
+        "Place Name": "Orion Mall, Bangalore, India",
+        "Latitude": "13.011053",
+        "Longitude": "77.554939"
+    },
+    {
+        "Place Name": "Disney Springs, FL, USA",
+        "Latitude": "28.37097",
+        "Longitude": "-81.519249"
+    },
+    {
+        "Place Name": "Champ de Mars, Paris, France",
+        "Latitude": "48.855633",
+        "Longitude": "2.298337"
+    },
+    {
+        "Place Name": "Lulu International Shopping Mall, Kerala, India",
+        "Latitude": "10.026617",
+        "Longitude": "76.308411"
+    },
+    {
+        "Place Name": "Municipal Market of São Paulo, Brazil",
+        "Latitude": "-23.541819",
+        "Longitude": "-46.629387"
+    },
+    {
+        "Place Name": "Alexanderplatz, Berlin, Germany",
+        "Latitude": "52.521992",
+        "Longitude": "13.413244"
+    },
+    {
+        "Place Name": "Magic Kingdom Park, FL, USA",
+        "Latitude": "28.417665",
+        "Longitude": "-81.581238"
+    },
+    {
+        "Place Name": "The Maidan, Kolkata, India",
+        "Latitude": "22.554443",
+        "Longitude": "88.340569"
+    },
+    {
+        "Place Name": "Mysore Palace, Karnataka, India",
+        "Latitude": "12.305199",
+        "Longitude": "76.654549"
+    },
+    {
+        "Place Name": "The India Gate, New Delhi, India",
+        "Latitude": "28.612894",
+        "Longitude": "77.229446"
+    },
+    {
+        "Place Name": "Al-Masjid an-Nabawi, Medina, Saudi Arabia",
+        "Latitude": "24.467035",
+        "Longitude": "39.610947"
+    },
+    {
+        "Place Name": "Gateway Of India Mumbai, Maharashtra, India",
+        "Latitude": "18.922064",
+        "Longitude": "72.834641"
+    },
+    {
+        "Place Name": "Henham Park, which has been home to Latitude Festival",
+        "Latitude": "52.334541",
+        "Longitude": "1.594031"
+    },
+    {
+        "Place Name": "Marlay Park, which has been home to Longitude Festival",
+        "Latitude": "53.273392",
+        "Longitude": "-6.269268"
+    },
+    {
+        "Place Name": "The Hollywood Bowl, Los Angeles, USA",
+        "Latitude": "34.112236",
+        "Longitude": "-118.339432"
+    },
+    {
+        "Place Name": "Hollywood & Highland, Los Angeles, USA",
+        "Latitude": "34.10231",
+        "Longitude": "-118.340027"
+    },
+    {
+        "Place Name": "Intercity Istanbul Park, Turkey",
+        "Latitude": "40.95787",
+        "Longitude": "29.410341"
+    }
+]
