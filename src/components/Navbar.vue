@@ -3,8 +3,14 @@
     <nav>
         <v-app-bar app flat >
             <v-app-bar-nav-icon text  @click = "leftDrawer = !leftDrawer"></v-app-bar-nav-icon>
-             <v-toolbar-title class = 'font-weight-black '>Where Am I</v-toolbar-title>
+
+             <v-toolbar-title class = 'font-weight-black '>Jeff's Geography Quiz (play the real thing at GeoGussr)</v-toolbar-title>
             <v-spacer></v-spacer>
+            <v-avatar>
+            <img
+                src= "@/assets/soupensu.jpg"
+            >
+            </v-avatar>
 
             <!-- <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">

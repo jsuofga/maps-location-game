@@ -3,7 +3,13 @@
     <Navbar/>
 
     <v-main class = "grey lighten-3" >
-      <router-view></router-view>
+      <router-view
+        @message-score= "updateScore"
+        v-bind:score= "score"
+      >
+
+
+      </router-view>
     </v-main>
   </v-app>
 </template>
@@ -22,6 +28,16 @@ export default {
 
   data: () => ({
     //
+    score: 0,
+
   }),
+
+  methods:{
+    updateScore(payload){
+      console.log('score is:', payload)
+      this.score = payload
+    }
+
+  }
 };
 </script>

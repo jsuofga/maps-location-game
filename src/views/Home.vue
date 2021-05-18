@@ -1,15 +1,19 @@
 <template>
   <div class="home">
-      <v-btn id="test" @click= "test">Test</v-btn>
+      <div id = "guess-location" class = ' d-flex justify-center'> 1. Where is this?</div>
+      <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div>
+      <v-btn id="goto-place" @click= "gotoPlace"><v-icon left class = "mx-5">mdi-airplane-takeoff</v-icon> Goto Next Place</v-btn>
       <div id= "hideMyAss"></div>
    
       <div id="streetMap" ref = "streetMap" class= "home d-flex justify-center" >  
-            <h5>Street Map</h5>
+            <!-- <h5>Street Map</h5> -->
       </div>
       
+      <div id = "pick-location" class = ' d-flex justify-center'> 2. Pick Location On Map</div>
+
       <!-- <v-btn id = "btn-guess" @click= "submit" color = " purple accent-3 white--text"><v-icon>mdi-cursor-pointer</v-icon> Submit my guess</v-btn> -->
       <div id="map" ref = "map" class= "home d-flex justify-center"  >  
-        <h5>Map</h5>
+        <!-- <h5>Map</h5> -->
       </div>   
 
 
@@ -54,8 +58,9 @@
         centered
         color="success"
         height ="200px"
+        timeout= "-1"
       >
-        {{ `You are ${this.havershine()}-miles away!`  }}
+        {{ `You are ${this.havershine()}-miles away! ${this.message}`  }}
   
         <template v-slot:action="{ attrs }">
           <v-btn
@@ -64,7 +69,7 @@
             border="5px"
             text
             v-bind="attrs"
-            @click="snackbar = false"
+            @click= "closeSnackBar"
           >
             Close
           </v-btn>
@@ -93,24 +98,42 @@
       map: null , //declare map object
       mapCenter:{ lat: 0, lng: 0 },  // default world centered
       streetMap: null,  // declare map for panorama map view
-      streetMapCenter: {lat:40.679855,lng:-74.089859},//for streetview
+      streetMapCenter: { lat: 0, lng: 0 },//for streetview
       playerGuess:{lat: '', lng: '' }, // this is where on the map the player clicked. save as player guess
       dialog:false,
       snackbar:false,
+      message:'',  // Snack Bar Message 
+      score: 0,  // Player Score
       places: PlacesData,
+      counter: 1, // Counter Number of Places shown
     }),
     methods: {
-      test(){
+      initMapToCenter(){
+          this.map = new google.maps.Map(this.$refs.map, {
+          center: this.mapCenter,
+          zoom: 1,
+          minZoom:1,
+        });
+      },
+      addMapClickEvent(){
+          // Add click event to google map 
+            google.maps.event.addListener(this.map, 'click', e => {
+            this.playerGuess = {lat: e.latLng.lat(),lng:e.latLng.lng() }
+            this.dialog = true
+          })
+      },
+
+      gotoPlace(){
         console.log('test', this.places[1])
-        let randomPlace =  Math.floor(Math.random() * 100);  
+        let randomPlace =  Math.floor(Math.random() * 9999 );  //pick a random place from any 10,000
         this.streetMapCenter.lat = parseFloat(this.places[randomPlace].Latitude)
         this.streetMapCenter.lng = parseFloat(this.places[randomPlace].Longitude)
+        // this.streetMapCenter.lat = parseFloat(this.places[5002].Latitude)
+        // this.streetMapCenter.lng = parseFloat(this.places[5002].Longitude)
         console.log(this.streetMapCenter)
 
         this.streetMap = new google.maps.StreetViewPanorama(this.$refs.streetMap, {
          position: this.streetMapCenter,
-         //postition: {lat:this.places[0].Latitude,lng:this.places[0].Longitude},
-     
          pov: {heading: 165, pitch: 0},
          motionTracking: false,
          fullscreenControl: false
@@ -118,8 +141,7 @@
         });
       },
         submit(_submitAnswer){
-            //console.log('guess is', this.playerGuess)
-            //alert(`${this.havershine()}-miles`)
+
             if(_submitAnswer == 'no'){
                 this.snackbar = false
                 this.dialog = false
@@ -129,8 +151,7 @@
                 //Update Map with answer showing location of the Street View
                 this.map = new google.maps.Map(this.$refs.map, {
                    center: this.streetMapCenter,
-               
-                  zoom: 8,
+                   zoom: 8,
                 });
 
               // Set a marker on map to show the answer
@@ -140,11 +161,22 @@
               });
                 
                 marker.setMap(this.map)
+                this.addMapClickEvent()// Add click event to google map 
+                this.points() // Show Message
+                this.counter += 1
+             
             }
-          
+
+        },
+
+        closeSnackBar(){
+          this.snackbar = false //Close Snack Bar
+          this.initMapToCenter() //Center Map to Lat = 0, Long = 0
+          this.addMapClickEvent() // Add click event to google map 
+          this.gameStatus() //Check Game Status
+
         },
         // Havershine Formula to calculate distances between (Longitude1, Latitude1) and (Longitude2, Latitude2)
-        //  
         havershine(){
             const R = 3958.8; // Radius of the Earth in miles
             let rlat1 = this.playerGuess.lat * (Math.PI/180); // Convert degrees to radians
@@ -152,38 +184,60 @@
             let difflat = rlat2-rlat1; // Radian difference (latitudes)
             let difflon = (this.streetMapCenter.lng-this.playerGuess.lng) * (Math.PI/180); // Radian difference (longitudes)
             let d =2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2))) ;
-         
             return Math.round(d);  //Send answer in miles , no decimals
-    
+        },
+        // Points and Message
+        points(){
+          console.log(this.havershine())
+            if(this.havershine() > 3000) {
+              this.message = "You on wrong continent bud"
+              this.score -=  1000
+            }else if(this.havershine() > 2000 && this.havershine()< 3000){
+              this.message = "You are way off!"
+              this.score -= 500
+            }else if(this.havershine() > 1000 && this.havershine()< 2000){
+               this.message = "Not Even Close"
+               this.score -= 250
+            }else if(this.havershine() > 500 && this.havershine()< 1000){
+               this.message = "Close"
+               this.score +=  0
+            }else if(this.havershine() > 250 && this.havershine()< 500){
+               this.message = "Getting Hot"
+               this.score += 250
+            }else if(this.havershine() > 100 && this.havershine()< 250){
+               this.message = "Close, but no cigars"
+               this.score += 500
+            }else if(this.havershine() > 50 && this.havershine()< 100){
+               this.message = "You are close!"
+               this.score += 1000
+            }else if(this.havershine() > 25 && this.havershine()< 50){
+               this.message = "You are Good!"
+               this.score +=  2000
+            }else if(this.havershine() > 10 && this.havershine()< 25){
+               this.message = "Genius"
+               this.score +=3000
+           }else if(this.havershine() < 10){
+               this.message = "BullsEye"
+               this.score += 5000
+            }
+      }, 
+
+      gameStatus(){
+        if(this.counter == 2){
+          this.$emit('message-score',this.score)
+          this.$router.push({name:'Gameover'})
+        }else{
+            //Do nothing
         }
-    },
+      }
+    },  
 
     mounted(){
-        this.map = new google.maps.Map(this.$refs.map, {
-          center: this.mapCenter,
-          zoom: 1,
-          minZoom:1,
-        });
-
-        this.streetMap = new google.maps.StreetViewPanorama(this.$refs.streetMap, {
-         position: this.streetMapCenter,
-         //postition: {lat:this.places[0].Latitude,lng:this.places[0].Longitude},
-     
-         pov: {heading: 165, pitch: 0},
-         motionTracking: false,
-         fullscreenControl: false
-       
-        });
-
-      // Add click event to google map 
-        google.maps.event.addListener(this.map, 'click', e => {
-          this.playerGuess = {lat: e.latLng.lat(),lng:e.latLng.lng() }
-          this.dialog = true
-        })
-  
+      this.initMapToCenter() //Center Map to Lat = 0, Long = 0
+      this.gotoPlace()  // pick random place
+      this.addMapClickEvent()   // Add click event to google map 
     }
   }
-
 
 </script>
 
@@ -196,10 +250,10 @@
  #hideMyAss{
    position:absolute;
    background-image: url("../assets/hide-location.png");
-   z-index:200; 
+   z-index:250; 
    top:0px;
    left:0px;
-   width: 160px;
+   width: 250px;
    height: 80px
  }
  #map{
@@ -210,12 +264,41 @@
    width: 480px;
    height:30vh
  }
- #test{
+ #goto-place{
    z-index:1000;
-   position:absolute;
-   top:0px;
-   right: 0px;
-   background-color: red;
+   position:fixed;
+   color:white;
+   top: 50%;
+   right:0%;
+   height: 10vh;
+   background-color: orange;
+ }
+ #pick-location{
+   background-color:magenta;
+   color:white;
+   width:480px;
+   position:fixed;
+   top: 65%;
+   left:0%;
+   z-index:5000;
+ }
+  #guess-location{
+   background-color:magenta;
+   color:white;
+   width:240px;
+   position:fixed;
+   top: 10%;
+   left:45%;
+   z-index:5000;
+ }
+   #score-board{
+   background-color: white;
+   color:black;
+   width:250px;
+   position:fixed;
+   top: 145px;
+   left:0%;
+   z-index:5000;
  }
 
 
