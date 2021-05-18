@@ -4,6 +4,7 @@ import Play from '../views/Play.vue'
 import Gameover from '../views/Gameover.vue'
 import Welcome from '../views/Welcome.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,6 +23,7 @@ const routes = [
     name: 'Play',
     component: Play
   },
+
 
 ]
 

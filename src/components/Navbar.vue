@@ -12,21 +12,8 @@
             >
             </v-avatar>
 
-            <!-- <v-menu offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                    <v-btn  depressed v-bind="attrs" v-on="on">
-                        <v-icon>mdi-chevron-down</v-icon>Menu
-                    </v-btn>
-                </template>
-                <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index" router-link :to= "item.link">
-                        <v-list-item-title >{{ item.title }}</v-list-item-title>
-                    </v-list-item>
-                </v-list>
-            </v-menu> -->
-
-            <v-btn depressed text >
-                <v-icon class = "left">mdi-export</v-icon>sign in
+            <v-btn depressed text @click= "gotoLogIn" >
+                <v-icon  class = "left">mdi-export</v-icon>log in
             </v-btn>
 
                              
@@ -50,8 +37,9 @@ export default {
 
     }),
     methods: {
-        test: function() {
-            this.dialog = true
+        gotoLogIn: function() {
+            this.$router.push({name:'LogIn'})
+       
         },
     }
 
