@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
+  <div class="play">
       <div id = "guess-location" class = ' d-flex justify-center'> 1. Where is this?</div>
       <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div>
       <v-btn id="goto-place" @click= "gotoPlace"><v-icon left class = "mx-5">mdi-airplane-takeoff</v-icon> Goto Next Place</v-btn>
       <div id= "hideMyAss"></div>
    
-      <div id="streetMap" ref = "streetMap" class= "home d-flex justify-center" >  
+      <div id="streetMap" ref = "streetMap" class= "play d-flex justify-center" >  
             <!-- <h5>Street Map</h5> -->
       </div>
       
@@ -84,14 +84,14 @@
 </template>
 
 <script>
-  import Home from '@/views/Home'
+  import Play from '@/views/Play'
   import PlacesData from '@/components/PlacesData'
 
   export default {
-    name: 'Home',
+    name: 'Play',
 
     components: {
-      Home,
+      Play,
     
     },
     data: () => ({
@@ -124,8 +124,10 @@
       },
 
       gotoPlace(){
-        console.log('test', this.places[1])
+        
         let randomPlace =  Math.floor(Math.random() * 9999 );  //pick a random place from any 10,000
+        console.log(this.places[randomPlace].Latitude)
+        console.log(this.places[randomPlace].Longitude)
         this.streetMapCenter.lat = parseFloat(this.places[randomPlace].Latitude)
         this.streetMapCenter.lng = parseFloat(this.places[randomPlace].Longitude)
         // this.streetMapCenter.lat = parseFloat(this.places[5002].Latitude)
@@ -223,7 +225,7 @@
       }, 
 
       gameStatus(){
-        if(this.counter == 2){
+        if(this.counter == 10){
           this.$emit('message-score',this.score)
           this.$router.push({name:'Gameover'})
         }else{
@@ -232,17 +234,24 @@
       }
     },  
 
+    created(){
+       let externalScript = document.createElement('script')
+       externalScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCNpcYO8K0hZY3T4xzYXlNP5ZKyjblb73I')
+       document.head.appendChild(externalScript)
+    },
+
     mounted(){
-      this.initMapToCenter() //Center Map to Lat = 0, Long = 0
-      this.gotoPlace()  // pick random place
-      this.addMapClickEvent()   // Add click event to google map 
+      setTimeout(this.initMapToCenter,200)
+      setTimeout(this.gotoPlace,400)
+      setTimeout(this.addMapClickEvent,600)
+
     }
   }
 
 </script>
 
 <style scoped>
- .home{
+ .play{
    /* border:1px solid red; */
    position:relative; 
    height:90vh

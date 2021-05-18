@@ -8,7 +8,6 @@
         v-bind:score= "score"
       >
 
-
       </router-view>
     </v-main>
   </v-app>
@@ -37,6 +36,9 @@ export default {
       console.log('score is:', payload)
       this.score = payload
     }
+
+  },
+  mount(){
 
   }
 };

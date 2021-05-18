@@ -23,7 +23,7 @@
     }),
     methods: {
         playAgain(){
-            this.$router.push({name:'Home'})
+            this.$router.push({name:'Play'})
         }
     },  
 
