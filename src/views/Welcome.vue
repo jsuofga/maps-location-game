@@ -1,6 +1,6 @@
 <template>
   <div class="welcome d-flex flex-column justify-center align-center">
-
+    
       <div v-if= "showRegister">
          <Register
             @message-showRegister = "update_showRegister"

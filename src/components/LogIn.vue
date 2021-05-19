@@ -26,7 +26,7 @@
 
           <v-text-field
             v-model="password"
-            :counter="10"
+           
             :rules="nameRules"
             prepend-inner-icon="mdi-lock"
             label="password"
@@ -83,7 +83,7 @@ export default {
       password: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+        v => (v && v.length <= 12) || 'Name must be less than 12 characters',
         ],
 
       error: '',
@@ -92,16 +92,17 @@ export default {
 methods:{
   
    login(){
-     console.log('email is',this.email)
-     console.log('username is',this.password)
+     //console.log('email is',this.email)
+     //console.log('username is',this.password)
 
      projectAuth.signInWithEmailAndPassword(this.email, this.password)
     .then((userCredential) => {
       // Signed in 
       var user = userCredential.user;
-      console.log(user)
+      //console.log(user)
       this.error = ''
-      // this.$emit('message-showSignUp', false)
+      this.$emit('message-showSignUp', false)
+      this.$router.push({name:'Play'})
       // ...
     })
     .catch((error) => {
@@ -116,7 +117,7 @@ methods:{
    cancel(){
       this.email = ''
       this.password = ''
-      // this.$router.push({name:'Welcome'})
+      
    },
    gotoRegister(){
      this.$emit('message-showRegister', true)
