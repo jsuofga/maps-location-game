@@ -1,11 +1,17 @@
 <template>
   <div class="welcome d-flex flex-column justify-center align-center">
 
-      <div v-if= "showSignUp">
-         <SignUp/>
+      <div v-if= "showRegister">
+         <Register
+            @message-showRegister = "update_showRegister"
+         
+         />
       </div>
        <div v-else>
-         <LogIn/>
+         <LogIn
+          @message-showRegister = "update_showRegister"
+          
+          />
        </div>
        
 
@@ -14,7 +20,7 @@
 
 <script>
   import Gameover from '@/views/Welcome'
-  import SignUp from '@/components/SignUp'
+  import Register from '@/components/Register'
   import LogIn from '@/components/LogIn'
 
   export default {
@@ -22,7 +28,7 @@
 
     components: {
       Gameover,
-      SignUp,
+      Register,
       LogIn 
 
     
@@ -31,11 +37,14 @@
 
     data: () => ({
 
-      showSignUp:true
+      showRegister:false
 
     }),
     methods: {
-       
+       update_showRegister(_payload){
+         this.showRegister = _payload
+
+       }
     },  
 
     mounted(){

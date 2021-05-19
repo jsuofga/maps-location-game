@@ -22,6 +22,8 @@
             class = "ma-3"
           ></v-text-field>
 
+          <v-card-text class="red--text">{{error}}</v-card-text>
+
           <v-text-field
             v-model="password"
             :counter="10"
@@ -36,6 +38,7 @@
            <div class="d-flex justify-space-around ">
             <v-btn
               color="error"
+              rounded
               class="ml-5 justify-center"
               @click="cancel"
             >
@@ -43,8 +46,9 @@
             </v-btn>
           
             <v-btn
-              color="primary"
-               class="ml-5 justify-center"
+              color="green accent-3 white--text"
+              rounded
+              class="ml-5 justify-center"
               @click="login"
             >
               Log In
@@ -54,7 +58,7 @@
         </v-form>
         <br>
 
-        <v-card-text class="d-flex justify-center ">No Account?  <strong @click = "gotoSignUp" id ="sign-up" class="mx-3"> Sign Up Here</strong></v-card-text>
+        <v-card-text class="d-flex justify-center ">No Account?  <strong @click = "gotoRegister" id ="sign-up" class="mx-3"> Register Here</strong></v-card-text>
   
   </v-card>
 
@@ -65,6 +69,8 @@
 </template>
 
 <script>
+import {projectAuth} from '../firebase/config'
+
 export default {
 
   data: () => ({
@@ -79,20 +85,42 @@ export default {
         v => !!v || 'Name is required',
         v => (v && v.length <= 10) || 'Name must be less than 10 characters',
         ],
+
+      error: '',
     }),
 
 methods:{
   
    login(){
      console.log('email is',this.email)
-     console.log('username is',this.username)
+     console.log('username is',this.password)
+
+     projectAuth.signInWithEmailAndPassword(this.email, this.password)
+    .then((userCredential) => {
+      // Signed in 
+      var user = userCredential.user;
+      console.log(user)
+      this.error = ''
+      // this.$emit('message-showSignUp', false)
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorMessage )
+      this.error = errorMessage
+      // ..
+    });
     
    },
    cancel(){
-      this.$router.push({name:'Welcome'})
+      this.email = ''
+      this.password = ''
+      // this.$router.push({name:'Welcome'})
    },
-   gotoSignUp(){
-     this.$router.push({name:'SignUp'})
+   gotoRegister(){
+     this.$emit('message-showRegister', true)
+    
    }
 
 }
