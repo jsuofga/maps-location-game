@@ -121,6 +121,7 @@ methods:{
    cancel(){
       this.email = ''
       this.password = ''
+      location.reload();
     
    },
 

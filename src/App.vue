@@ -1,12 +1,17 @@
 <template>
   <v-app>
-    <Navbar/>
+      <!-- <Navbar
+      v-bind:loggedIn="loggedIn"
+      /> -->
 
     <v-main class = "grey lighten-3" >
+    
       <router-view
         @message-score= "updateScore"
         v-bind:score= "score"
-      >
+        @message-showLogOut= "update_showLogOut"
+
+    >
 
       </router-view>
     </v-main>
@@ -17,17 +22,19 @@
 
 import Navbar from '@/components/Navbar'
 
-
 export default {
   name: 'App',
+
+
   components: {
       Navbar,
-    
+      
   },
 
   data: () => ({
     //
     score: 0,
+    loggedIn: false
 
   }),
 
@@ -35,6 +42,10 @@ export default {
     updateScore(payload){
       console.log('score is:', payload)
       this.score = payload
+    },
+    update_showLogOut(payload){
+    
+      this.loggedIn= true
     }
 
   },

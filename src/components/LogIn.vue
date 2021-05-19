@@ -99,9 +99,12 @@ methods:{
     .then((userCredential) => {
       // Signed in 
       var user = userCredential.user;
-      //console.log(user)
+      console.log(user)
       this.error = ''
       this.$emit('message-showSignUp', false)
+
+      this.$emit('message-loggedIn', true)
+
       this.$router.push({name:'Play'})
       // ...
     })
@@ -117,6 +120,7 @@ methods:{
    cancel(){
       this.email = ''
       this.password = ''
+      location.reload();
       
    },
    gotoRegister(){

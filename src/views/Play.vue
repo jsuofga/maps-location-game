@@ -1,5 +1,7 @@
 <template>
   <div class="play">
+      <v-btn @click= "logout" id='btn-log-out' rounded outlined class='cyan accent-3 white--text'>Log Out</v-btn>
+      
       <div id = "guess-location" class = ' d-flex justify-center'> 1. Where is this?</div>
       <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div>
       <v-btn id="goto-place" @click= "gotoPlace"><v-icon left class = "mx-5">mdi-airplane-takeoff</v-icon> Goto Next Place</v-btn>
@@ -9,7 +11,7 @@
             <!-- <h5>Street Map</h5> -->
       </div>
       
-      <div id = "pick-location" class = ' d-flex justify-center'> 2. Pick Location On Map</div>
+      <div id = "pick-location" class = ' d-flex justify-center'> 2. Guess Location</div>
 
       <!-- <v-btn id = "btn-guess" @click= "submit" color = " purple accent-3 white--text"><v-icon>mdi-cursor-pointer</v-icon> Submit my guess</v-btn> -->
       <div id="map" ref = "map" class= "home d-flex justify-center"  >  
@@ -108,6 +110,9 @@
       counter: 1, // Counter Number of Places shown
     }),
     methods: {
+      logout(){
+           this.$router.push({name:'Welcome'})
+      },
       initMapToCenter(){
           this.map = new google.maps.Map(this.$refs.map, {
           center: this.mapCenter,
@@ -124,24 +129,35 @@
       },
 
       gotoPlace(){
-        
-        let randomPlace =  Math.floor(Math.random() * 9999 );  //pick a random place from any 10,000
-        console.log(this.places[randomPlace].Latitude)
-        console.log(this.places[randomPlace].Longitude)
-        this.streetMapCenter.lat = parseFloat(this.places[randomPlace].Latitude)
-        this.streetMapCenter.lng = parseFloat(this.places[randomPlace].Longitude)
-        // this.streetMapCenter.lat = parseFloat(this.places[5002].Latitude)
-        // this.streetMapCenter.lng = parseFloat(this.places[5002].Longitude)
-        console.log(this.streetMapCenter)
+          if(this.counter ==1){
+            // Start with a well known place to get player easy start
+           
+              this.streetMapCenter.lat = 40.3598,  //Great Wall
+              this.streetMapCenter.lng =  116.0200  //Great Wall
+          }else{
+              let randomPlace =  Math.floor(Math.random() * 9999 );  //pick a random place from any 10,000
+              console.log(this.places[randomPlace].Latitude)
+              console.log(this.places[randomPlace].Longitude)
+              this.streetMapCenter.lat = parseFloat(this.places[randomPlace].Latitude)
+              this.streetMapCenter.lng = parseFloat(this.places[randomPlace].Longitude)
+              // this.streetMapCenter.lat = parseFloat(this.places[5002].Latitude)
+              // this.streetMapCenter.lng = parseFloat(this.places[5002].Longitude)
+              console.log(this.streetMapCenter)
 
-        this.streetMap = new google.maps.StreetViewPanorama(this.$refs.streetMap, {
-         position: this.streetMapCenter,
-         pov: {heading: 165, pitch: 0},
-         motionTracking: false,
-         fullscreenControl: false
        
-        });
-      },
+          }
+
+              this.streetMap = new google.maps.StreetViewPanorama(this.$refs.streetMap, {
+              position: this.streetMapCenter,
+              pov: {heading: 165, pitch: 0},
+              motionTracking: false,
+              fullscreenControl: false
+            
+            });
+
+          
+        },
+      
         submit(_submitAnswer){
 
             if(_submitAnswer == 'no'){
@@ -170,12 +186,12 @@
             }
 
         },
-
         closeSnackBar(){
           this.snackbar = false //Close Snack Bar
           this.initMapToCenter() //Center Map to Lat = 0, Long = 0
           this.addMapClickEvent() // Add click event to google map 
           this.gameStatus() //Check Game Status
+          this.gotoPlace()  //Goto next location
 
         },
         // Havershine Formula to calculate distances between (Longitude1, Latitude1) and (Longitude2, Latitude2)
@@ -194,36 +210,35 @@
             if(this.havershine() > 3000) {
               this.message = "You on wrong continent bud"
               this.score -=  1000
-            }else if(this.havershine() > 2000 && this.havershine()< 3000){
+            }else if(this.havershine() >= 2000 && this.havershine()< 3000){
               this.message = "You are way off!"
               this.score -= 500
-            }else if(this.havershine() > 1000 && this.havershine()< 2000){
+            }else if(this.havershine() >= 1000 && this.havershine()< 2000){
                this.message = "Not Even Close"
                this.score -= 250
-            }else if(this.havershine() > 500 && this.havershine()< 1000){
+            }else if(this.havershine() >= 500 && this.havershine()< 1000){
                this.message = "Close"
                this.score +=  0
-            }else if(this.havershine() > 250 && this.havershine()< 500){
+            }else if(this.havershine() >= 250 && this.havershine()< 500){
                this.message = "Getting Hot"
                this.score += 250
-            }else if(this.havershine() > 100 && this.havershine()< 250){
+            }else if(this.havershine() >= 100 && this.havershine()< 250){
                this.message = "Close, but no cigars"
                this.score += 500
-            }else if(this.havershine() > 50 && this.havershine()< 100){
+            }else if(this.havershine() >= 50 && this.havershine()< 100){
                this.message = "You are close!"
                this.score += 1000
-            }else if(this.havershine() > 25 && this.havershine()< 50){
+            }else if(this.havershine() >= 25 && this.havershine()< 50){
                this.message = "You are Good!"
                this.score +=  2000
-            }else if(this.havershine() > 10 && this.havershine()< 25){
+            }else if(this.havershine() >= 10 && this.havershine()< 25){
                this.message = "Genius"
                this.score +=3000
-           }else if(this.havershine() < 10){
+           }else if(this.havershine() <= 10){
                this.message = "BullsEye"
                this.score += 5000
             }
       }, 
-
       gameStatus(){
         if(this.counter == 10){
           this.$emit('message-score',this.score)
@@ -244,7 +259,6 @@
       setTimeout(this.initMapToCenter,200)
       setTimeout(this.gotoPlace,400)
       setTimeout(this.addMapClickEvent,600)
-
     }
   }
 
@@ -254,7 +268,13 @@
  .play{
    /* border:1px solid red; */
    position:relative; 
-   height:90vh
+   height:100vh
+ }
+ #btn-log-out{
+   position:absolute;
+   z-index:250; 
+   top:10px;
+   right:10px;
  }
  #hideMyAss{
    position:absolute;
@@ -271,7 +291,7 @@
    bottom:0px;
    left:0px;
    width: 480px;
-   height:30vh
+   height:50vh
  }
  #goto-place{
    z-index:1000;
@@ -280,14 +300,14 @@
    top: 50%;
    right:0%;
    height: 10vh;
-   background-color: orange;
+   background-color: magenta;
  }
  #pick-location{
    background-color:magenta;
    color:white;
    width:480px;
    position:fixed;
-   top: 65%;
+   top: 48%;
    left:0%;
    z-index:5000;
  }
@@ -305,7 +325,7 @@
    color:black;
    width:250px;
    position:fixed;
-   top: 145px;
+   top: 80px;
    left:0%;
    z-index:5000;
  }
