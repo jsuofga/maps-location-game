@@ -150,8 +150,6 @@
               console.log(this.places[randomPlace].Longitude)
               this.streetMapCenter.lat = parseFloat(this.places[randomPlace].Latitude)
               this.streetMapCenter.lng = parseFloat(this.places[randomPlace].Longitude)
-              // this.streetMapCenter.lat = parseFloat(this.places[5002].Latitude)
-              // this.streetMapCenter.lng = parseFloat(this.places[5002].Longitude)
               console.log(this.streetMapCenter)
 
        
