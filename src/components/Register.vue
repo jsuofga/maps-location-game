@@ -1,7 +1,7 @@
 <template>
 
     <div class = "register">
-        <v-card width="480" class='mt-5'>
+        <v-card width="480" class='mt-5 rounded-xl'>
           <v-card-title class="headline justify-center">
             Register New User
           </v-card-title>
@@ -19,6 +19,7 @@
             label="E-mail"
             required
             outlined
+            rounded
             class = "ma-3"
           ></v-text-field>
 
@@ -33,6 +34,7 @@
             label="password"
             required
             outlined
+            rounded
             class = "ma-3"
           ></v-text-field>
         

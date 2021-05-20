@@ -1,6 +1,8 @@
 <template>
   <div class="play">
-      <v-btn @click= "logout" id='btn-log-out' rounded outlined class='cyan accent-3 white--text'>Log Out</v-btn>
+      
+    
+      <v-btn @click= "logout" id='btn-log-out' rounded outlined class='cyan accent-3 white--text'> <v-icon>mdi-account</v-icon> <v-text class='caption text-lowercase mr-3'>{{userEmail}}</v-text><strong>Log Out</strong> </v-btn>
       
       <div id = "guess-location" class = ' d-flex justify-center'> 1. Where is this?</div>
       <!-- <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div> -->
@@ -9,10 +11,11 @@
           v-model="score"
           height="20"
           rounded
-          color='blue'
+          color='orange'
         >
-          <v-text class='white--text' >{{ (score)*100 }} points  </v-text>
-           <v-text class = 'mx-5 white--text'>{{counter-1}}/10 sites</v-text>
+          <v-text class='white--text' >{{ (score)*100 }} <v-text class='caption'>points </v-text></v-text>
+          
+           <v-text class = 'ml-5 white--text'>{{counter-1}}/10 <v-text class='caption'>sites</v-text></v-text>
         </v-progress-linear>
        
 
@@ -126,6 +129,7 @@
       score: 0,  // Player Score
       places: PlacesData,
       counter: 1, // Counter Number of Places shown
+      userEmail: '' //user logged in email
     }),
     methods: {
       logout(){         
@@ -281,9 +285,10 @@
     },
 
     mounted(){
-      setTimeout(this.initMapToCenter,200)
-      setTimeout(this.gotoPlace,400)
-      setTimeout(this.addMapClickEvent,600)
+      setTimeout(this.initMapToCenter,500)
+      setTimeout(this.gotoPlace,1000)
+      setTimeout(this.addMapClickEvent,1500)
+      this.userEmail = projectAuth.currentUser.email  // Get current user email accnt
     }
   }
 

@@ -1,5 +1,6 @@
 <template>
   <div class="welcome d-flex flex-column justify-space-around align-center">
+    <div id='octava'><img src="../assets/octava-logo-white.png" width = "100 px" alt=""> </div>
 
     <h1 id="title"><span id='explorer'>Play</span> . <span id='discover'>Explore</span> . <span id='play'>Discover</span> </h1>
 
@@ -22,7 +23,7 @@
        </div>
     </div>
     
-   <div id='octava'><img src="../assets/octava-logo-white.png" width = "100 px"alt=""> </div>
+   
        
 
   </div>
@@ -93,8 +94,8 @@
  }
 #octava{
 position:absolute;
-bottom:10px;
-right:10px;
+top:10px;
+left:10px;
 
 }
 

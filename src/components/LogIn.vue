@@ -1,11 +1,11 @@
 <template>
 
     <div class = "log-in">
-        <v-card width="480" class='mt-5'>
+        <v-card width="480"  class='mt-5 rounded-xl'>
           <v-card-title class="headline justify-center">
-            Welcome
+           Log In
           </v-card-title>
-            <v-card-text class="d-flex justify-center ">Log In</v-card-text>
+            <!-- <v-card-text class="d-flex justify-center ">Log In</v-card-text> -->
           <v-divider></v-divider>
           <v-form
             ref="form"
@@ -19,6 +19,7 @@
             label="E-mail"
             required
             outlined
+            rounded
             class = "ma-3"
           ></v-text-field>
 
@@ -32,6 +33,7 @@
             label="password"
             required
             outlined
+            rounded
             class = "ma-3"
           ></v-text-field>
         

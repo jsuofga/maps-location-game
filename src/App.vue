@@ -1,8 +1,5 @@
 <template>
   <v-app>
-      <!-- <Navbar
-      v-bind:loggedIn="loggedIn"
-      /> -->
 
     <v-main class = "grey lighten-3" >
     
@@ -19,12 +16,10 @@
 </template>
 
 <script>
-
 import Navbar from '@/components/Navbar'
 
 export default {
   name: 'App',
-
 
   components: {
       Navbar,

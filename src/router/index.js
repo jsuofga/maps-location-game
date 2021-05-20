@@ -46,9 +46,9 @@ router.beforeEach((to,from,next)=> {
       //console.log('currentUser ',projectAuth.currentUser)
       //Check if NOT logged in
       if(!projectAuth.currentUser){
-        //alert(' not authenticated')
+        //Not Authenticated.
 
-        //Goto Welcome page
+        //Goback to Welcome page to Log In again
         next({
           path: '/',
           query: {
@@ -56,8 +56,9 @@ router.beforeEach((to,from,next)=> {
           }
         })
       }else{
-        // Proceed to route
-        //alert('authenticated')
+        //Authenticated.
+        console.log('email is',projectAuth.currentUser.email)
+        //  Proceed to route
         next()
       }
     }else{
