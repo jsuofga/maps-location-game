@@ -88,6 +88,7 @@
 <script>
   import Play from '@/views/Play'
   import PlacesData from '@/components/PlacesData'
+  import {projectAuth} from '../firebase/config'
 
   export default {
     name: 'Play',
@@ -110,8 +111,17 @@
       counter: 1, // Counter Number of Places shown
     }),
     methods: {
-      logout(){
-           this.$router.push({name:'Welcome'})
+      logout(){         
+
+          // Sign Out of Firebase
+           projectAuth.signOut().then(() => {
+              // Sign-out successful.
+              this.$router.push({name:'Welcome'})
+            }).catch((error) => {
+              // An error happened.
+            });
+
+
       },
       initMapToCenter(){
           this.map = new google.maps.Map(this.$refs.map, {
