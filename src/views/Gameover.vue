@@ -1,7 +1,7 @@
 <template>
   <div class="game-over d-flex flex-column justify-center align-center">
       <h1 class = "mb-10">Game Over</h1>
-      <h5 class = "mb-10">Your Score is {{score}}</h5>
+      <h5 class = "mb-10">Your Score is {{score * 100}}</h5>
       <v-btn @click= "playAgain" class = "mt-10" color = 'green white--text'>Play Again</v-btn>
   </div>
 </template>

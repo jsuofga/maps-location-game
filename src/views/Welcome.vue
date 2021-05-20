@@ -1,7 +1,7 @@
 <template>
   <div class="welcome d-flex flex-column justify-space-around align-center">
 
-    <h1 id="title"><span id='explorer'>Explore</span> . <span id='discover'>Discover</span> . <span id='play'>Play</span> </h1>
+    <h1 id="title"><span id='explorer'>Play</span> . <span id='discover'>Explore</span> . <span id='play'>Discover</span> </h1>
 
     <v-btn v-if = "!loginGame" @click= "logIn" x-large rounded color= 'cyan accent-3 white--text'>Enter to Play</v-btn>
 
@@ -40,8 +40,7 @@
       Gameover,
       Register,
       LogIn 
-
-    
+   
     },
     props:[],
 
@@ -70,14 +69,12 @@
 
 </script>
 
-<style scoped>
+<style scoped >
  .welcome{
    position:relative;
    opacity: .8;
    background-image: url("../assets/background.jpg"); 
    background-size: cover;
-   background-position-y: -110px;
-   background-position-x: -10px;
    height:100vh
  }
  #title{
@@ -100,5 +97,6 @@ bottom:10px;
 right:10px;
 
 }
+
 
 </style>

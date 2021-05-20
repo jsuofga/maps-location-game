@@ -3,7 +3,24 @@
       <v-btn @click= "logout" id='btn-log-out' rounded outlined class='cyan accent-3 white--text'>Log Out</v-btn>
       
       <div id = "guess-location" class = ' d-flex justify-center'> 1. Where is this?</div>
-      <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div>
+      <!-- <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div> -->
+      <div id = "score-board" class = ' d-flex justify-center'>
+        <v-progress-linear
+          v-model="score"
+          height="20"
+          rounded
+          color='blue'
+        >
+          <v-text class='white--text' >{{ (score)*100 }} points  </v-text>
+           <v-text class = 'mx-5 white--text'>{{counter-1}}/10 sites</v-text>
+        </v-progress-linear>
+       
+
+    <br>
+      </div>
+
+
+      
       <v-btn id="goto-place" @click= "gotoPlace"><v-icon left class = "mx-5">mdi-airplane-takeoff</v-icon> Goto Next Place</v-btn>
       <div id= "hideMyAss"></div>
    
@@ -58,7 +75,7 @@
       <v-snackbar
         v-model="snackbar"
         centered
-        color="success"
+        color="white black--text"
         height ="200px"
         timeout= "-1"
       >
@@ -66,14 +83,14 @@
   
         <template v-slot:action="{ attrs }">
           <v-btn
-            color="red"
             outlined
+            color="green"
             border="5px"
             text
             v-bind="attrs"
             @click= "closeSnackBar"
           >
-            Close
+            NEXT
           </v-btn>
         </template>
       </v-snackbar>
@@ -217,34 +234,34 @@
           console.log(this.havershine())
             if(this.havershine() > 3000) {
               this.message = "You on wrong continent bud"
-              this.score -=  1000
+              this.score -=  1
             }else if(this.havershine() >= 2000 && this.havershine()< 3000){
               this.message = "You are way off!"
-              this.score -= 500
+              this.score += 0
             }else if(this.havershine() >= 1000 && this.havershine()< 2000){
                this.message = "Not Even Close"
-               this.score -= 250
+               this.score += 1
             }else if(this.havershine() >= 500 && this.havershine()< 1000){
                this.message = "Close"
-               this.score +=  0
+               this.score +=  3
             }else if(this.havershine() >= 250 && this.havershine()< 500){
                this.message = "Getting Hot"
-               this.score += 250
+               this.score += 5
             }else if(this.havershine() >= 100 && this.havershine()< 250){
                this.message = "Close, but no cigars"
-               this.score += 500
+               this.score += 6
             }else if(this.havershine() >= 50 && this.havershine()< 100){
                this.message = "You are close!"
-               this.score += 1000
+               this.score += 7
             }else if(this.havershine() >= 25 && this.havershine()< 50){
                this.message = "You are Good!"
-               this.score +=  2000
+               this.score +=  8
             }else if(this.havershine() >= 10 && this.havershine()< 25){
                this.message = "Genius"
-               this.score +=3000
+               this.score +=9
            }else if(this.havershine() <= 10){
                this.message = "BullsEye"
-               this.score += 5000
+               this.score += 10
             }
       }, 
       gameStatus(){

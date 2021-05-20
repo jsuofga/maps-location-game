@@ -54,3 +54,9 @@ export default {
   }
 };
 </script>
+
+<style >
+  html{
+      overflow-y: hidden;  /*removes the vertical scroll bars from app */
+    }
+</style>
