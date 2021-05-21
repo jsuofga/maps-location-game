@@ -1,6 +1,5 @@
 <template>
   <div class="play">
-      
     
       <v-btn @click= "logout" id='btn-log-out' rounded outlined class='cyan accent-3 white--text'> <v-icon>mdi-account</v-icon> <v-text class='caption text-lowercase mr-3'>{{userEmail}}</v-text><strong>Log Out</strong> </v-btn>
       
@@ -17,7 +16,6 @@
           
            <v-text class = 'ml-5 white--text'>{{counter-1}}/10 <v-text class='caption'>sites</v-text></v-text>
         </v-progress-linear>
-       
 
     <br>
       </div>
@@ -132,6 +130,10 @@
       userEmail: '' //user logged in email
     }),
     methods: {
+      playSound(){
+          // setup audio files
+
+      },
       logout(){         
 
           // Sign Out of Firebase
@@ -235,37 +237,51 @@
         },
         // Points and Message
         points(){
+        //set up audio
+          let mySound_pass = new Audio("http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a")
+          let mySound_fail = new Audio("https://rpg.hamsterrepublic.com/wiki-images/d/d7/Oddbounce.ogg")
+
           console.log(this.havershine())
             if(this.havershine() > 3000) {
               this.message = "You on wrong continent bud"
               this.score -=  1
+              mySound_fail.play()
             }else if(this.havershine() >= 2000 && this.havershine()< 3000){
               this.message = "You are way off!"
               this.score += 0
+              mySound_fail.play()
             }else if(this.havershine() >= 1000 && this.havershine()< 2000){
                this.message = "Not Even Close"
                this.score += 1
+               mySound_fail.play()
             }else if(this.havershine() >= 500 && this.havershine()< 1000){
                this.message = "Close"
                this.score +=  3
+               mySound_pass.play()
             }else if(this.havershine() >= 250 && this.havershine()< 500){
                this.message = "Getting Hot"
                this.score += 5
+               mySound_pass.play()
             }else if(this.havershine() >= 100 && this.havershine()< 250){
                this.message = "Close, but no cigars"
                this.score += 6
+               mySound_pass.play()
             }else if(this.havershine() >= 50 && this.havershine()< 100){
                this.message = "You are close!"
                this.score += 7
+               mySound_pass.play()
             }else if(this.havershine() >= 25 && this.havershine()< 50){
                this.message = "You are Good!"
                this.score +=  8
+               mySound_pass.play()
             }else if(this.havershine() >= 10 && this.havershine()< 25){
                this.message = "Genius"
                this.score +=9
+               mySound_pass.play()
            }else if(this.havershine() <= 10){
                this.message = "BullsEye"
                this.score += 10
+               mySound_pass.play()
             }
       }, 
       gameStatus(){
@@ -289,6 +305,8 @@
       setTimeout(this.gotoPlace,1000)
       setTimeout(this.addMapClickEvent,1500)
       this.userEmail = projectAuth.currentUser.email  // Get current user email accnt
+      
+    
     }
   }
 
