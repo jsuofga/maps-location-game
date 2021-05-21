@@ -2,9 +2,22 @@
   <div class="play">
     
       <v-btn @click= "logout" id='btn-log-out' rounded outlined class='cyan accent-3 white--text'> <v-icon>mdi-account</v-icon> <v-text class='caption text-lowercase mr-3'>{{userEmail}}</v-text><strong>Log Out</strong> </v-btn>
-      
-      <div id = "guess-location" class = ' d-flex justify-center'> 1. Where is this?</div>
-      <!-- <div id = "score-board" class = ' d-flex justify-center'>{{ counter}}/10 Your Score {{score}} </div> -->
+
+
+       <div id = "guess-location" class = ' d-flex justify-center'> 
+          <v-snackbar
+                timeout= "-1"
+                :value="true"
+                absolute
+                shaped
+                color='purple accent-3'
+          >
+                <v-icon>mdi-head-question</v-icon> <span id= 'where-is-this' class = 'mx-5 white--text font-weight-bold text-uppercase'>...Where is this ?</span> 
+        </v-snackbar>
+
+       </div>
+ 
+
       <div id = "score-board" class = ' d-flex justify-center'>
         <v-progress-linear
           v-model="score"
@@ -22,14 +35,13 @@
 
 
       
-      <v-btn id="goto-place" @click= "gotoPlace"><v-icon left class = "mx-5">mdi-airplane-takeoff</v-icon> Goto Next Place</v-btn>
-      <div id= "hideMyAss"></div>
-   
-      <div id="streetMap" ref = "streetMap" class= "play d-flex justify-center" >  
+      <v-btn id="goto-place" @click= "gotoPlace" color='purple accent-3'><v-icon left class = "mx-5">mdi-airplane-takeoff</v-icon> Goto Next Place</v-btn>
+ 
+       <div id="streetMap" ref = "streetMap" class= "play d-flex justify-center" >  
             <!-- <h5>Street Map</h5> -->
       </div>
       
-      <div id = "pick-location" class = ' d-flex justify-center'> 2. Guess Location</div>
+      <div id = "pick-location" class = ' d-flex justify-center purple accent-3' > 2. Guess Location</div>
 
       <!-- <v-btn id = "btn-guess" @click= "submit" color = " purple accent-3 white--text"><v-icon>mdi-cursor-pointer</v-icon> Submit my guess</v-btn> -->
       <div id="map" ref = "map" class= "home d-flex justify-center"  >  
@@ -182,7 +194,8 @@
               position: this.streetMapCenter,
               pov: {heading: 165, pitch: 0},
               motionTracking: false,
-              fullscreenControl: false
+              fullscreenControl: false,
+              disableDefaultUI: true  // hide googel streeview  zoom buttons , banners, location of stree view . 
             
             });
 
@@ -314,9 +327,12 @@
 
 <style scoped>
  .play{
-   /* border:1px solid red; */
    position:relative; 
    height:100vh
+ }
+ #where-is-this{
+   font-size:1.25rem
+
  }
  #btn-log-out{
    position:absolute;
@@ -324,15 +340,7 @@
    top:10px;
    right:10px;
  }
- #hideMyAss{
-   position:absolute;
-   background-image: url("../assets/hide-location.png");
-   z-index:250; 
-   top:0px;
-   left:0px;
-   width: 250px;
-   height: 80px
- }
+
  #map{
    position:absolute;
    z-index:100; 
@@ -348,10 +356,9 @@
    top: 50%;
    right:0%;
    height: 10vh;
-   background-color: magenta;
+ 
  }
  #pick-location{
-   background-color:magenta;
    color:white;
    width:480px;
    position:fixed;
@@ -360,7 +367,6 @@
    z-index:5000;
  }
   #guess-location{
-   background-color:magenta;
    color:white;
    width:240px;
    position:fixed;
@@ -369,14 +375,13 @@
    z-index:5000;
  }
    #score-board{
-   background-color: white;
-   color:black;
    width:250px;
    position:fixed;
-   top: 80px;
-   left:0%;
+   bottom: 5%;
+   left:45%;
    z-index:5000;
  }
+
 
 
 </style>
