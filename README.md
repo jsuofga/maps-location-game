@@ -1,4 +1,7 @@
 # where-am-i
+1. Game inspired by GeoGussr.
+2. Uuess location from StreeView
+3. Utilizes Google MAP API 
 
 ## Project setup
 ```

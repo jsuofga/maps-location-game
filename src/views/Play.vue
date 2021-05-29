@@ -41,10 +41,9 @@
             <!-- <h5>Street Map</h5> -->
       </div>
       
-      <div id = "pick-location" class = ' d-flex justify-center purple accent-3' > 2. Guess Location</div>
+      <div v-if = "!isActive" id = "pick-location" class = ' d-flex justify-center purple accent-3' > 2. Guess Location</div>
 
-      <!-- <v-btn id = "btn-guess" @click= "submit" color = " purple accent-3 white--text"><v-icon>mdi-cursor-pointer</v-icon> Submit my guess</v-btn> -->
-      <div id="map" ref = "map" class= "home d-flex justify-center"  >  
+      <div id="map" ref = "map" @mouseover= "isActive= true" @mouseleave= "isActive= false"  class= "home d-flex justify-center " :class= "{mapActive:isActive,mapNotActive:!isActive}" >  
         <!-- <h5>Map</h5> -->
       </div>   
 
@@ -139,9 +138,11 @@
       score: 0,  // Player Score
       places: PlacesData,
       counter: 1, // Counter Number of Places shown
-      userEmail: '' //user logged in email
+      userEmail: '', //user logged in email
+      isActive: false
     }),
     methods: {
+
       playSound(){
           // setup audio files
 
@@ -155,8 +156,6 @@
             }).catch((error) => {
               // An error happened.
             });
-
-
       },
       initMapToCenter(){
           this.map = new google.maps.Map(this.$refs.map, {
@@ -346,9 +345,19 @@
    z-index:100; 
    bottom:0px;
    left:0px;
-   width: 480px;
-   height:50vh
+
  }
+.mapActive{
+   width: 480px;
+   height:50vh;
+   transition: width 2s, height 2s;
+}
+.mapNotActive{
+   width: 240px;
+   height:25vh;
+   transition: width 2s, height 2s;
+}
+
  #goto-place{
    z-index:1000;
    position:fixed;
@@ -360,9 +369,9 @@
  }
  #pick-location{
    color:white;
-   width:480px;
+   width:240px;
    position:fixed;
-   top: 48%;
+   top: 72.5%;
    left:0%;
    z-index:5000;
  }
